@@ -1,17 +1,19 @@
 {
-  "name": "homework2-backend",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
+  "name": "backend",
+  "version": "0.0.0",
+  "description": "> BackEnd",
+  "main": "app.js",
   "scripts": {
-    "start": "node server"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "bson": "^4.0.0",
     "express": "^4.16.4",
-    "express-session": "^1.15.6",
-    "mongoose": "^5.3.12",
-    "mongoose-auto-increment": "^5.0.1",
-    "nodemailer": "^4.7.0"
+    "mongodb": "^2.2.19",
+    "mongoose": "^4.13.17"
   }
 }
