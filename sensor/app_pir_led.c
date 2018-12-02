@@ -6,15 +6,15 @@
 #include<linux/kdev_t.h>
 #include<string.h>
 
-#define PIR_PATH "/dev/dev_pir"
+#define PIR_PATH "/dev/dev_ult"
 #define LED_PATH "/dev/ledtest_dev"
 
 int main(int argc, char *argv[]){
-	int fd_pir =0;
+	int fd_ult =0;
 	int fd_led =0;
 	char *buffer = (char*)malloc(sizeof(char)*10);
-
-	if((fd_pir = open(PIR_PATH, O_RDWR | O_NONBLOCK))<0){
+	int distance;
+	if((fd_ult = open(PIR_PATH, O_RDWR | O_NONBLOCK))<0){
 		perror("open()");
 		exit(1);
 	}
@@ -24,11 +24,12 @@ int main(int argc, char *argv[]){
 	}
 
 	printf("open success!\n");
-
+	
 	while(1){
-		read(fd_pir,buffer,1);
+		read(fd_ult,buffer,9);
 		printf("%s\n",buffer);
-		if(strcmp(buffer,"1")==0){
+		distance=atoi(buffer);
+		if(distance<50){
 			printf("yeah\n");
 			write(fd_led,buffer,1);
 		}

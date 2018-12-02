@@ -36,6 +36,7 @@ ssize_t read(struct file *pfile, char __user *buffer, size_t length, loff_t *off
 
 int close(struct inode *pinode, struct file *pfile){
 	printk(KERN_ALERT "RELEASE pir_dev\n");
+	gpio_free(GPIO4);
 	return 0;
 }
 

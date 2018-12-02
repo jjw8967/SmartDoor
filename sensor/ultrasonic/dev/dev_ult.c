@@ -16,34 +16,42 @@ MODULE_LICENSE("GPL");
 static long startTime=0;
 static long travelTime =0;
 static char distance[10];
+static int value=0;
+struct timeval tval;
 
 int ult_open(struct inode *pinode, struct file *pfile){
 	printk(KERN_ALERT "OPEN dev_ult\n");
 	gpio_request(GPIO5, "GPIO5");
 	gpio_request(GPIO6, "GPIO6");
+	gpio_direction_output(GPIO5,0);
+	gpio_direction_input(GPIO6);
+
 	return 0;
 }
 
 int ult_close(struct inode *pinode, struct file *pfile){
-	gpio_direction_output(GPIO5,0);
-	gpio_direction_output(GPIO6,0);
+	gpio_free(GPIO5);
+	gpio_free(GPIO6);
 	printk(KERN_ALERT "RELEASE dev_ult\n");
 	return 0;
 }
 int ult_read(struct file *pfile, char *buffer, size_t size, loff_t *ppos){
-	gpio_direction_output(GPIO5,1);
+	
+	gpio_set_value(GPIO5,1);
 	udelay(20);
-	gpio_direction_output(GPIO5,0);
+	gpio_set_value(GPIO5,0);
 	
 	while(gpio_get_value(GPIO6)==0);
-	//startTime = jiffies;
-
+	do_gettimeofday(&tval);
+	startTime = tval.tv_usec;
+	
 	while(gpio_get_value(GPIO6)==1);
-	//travelTime = (jiffies - startTime)/HZ*1000;
+	do_gettimeofday(&tval);
+	travelTime = (tval.tv_usec - startTime);
 
 	memset(distance,0,10);
 	sprintf(distance,"%d",(int)(travelTime / 58));
-	//copy_to_user(buffer,distance,strlen(distance+1));
+	copy_to_user(buffer,distance,strlen(distance)+1);
 
 	printk(KERN_ALERT "distance = %s\n",distance);
 	return 0;	
