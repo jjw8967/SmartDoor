@@ -1,8 +1,8 @@
-cmd_/home/pi/SmartDoor/sensor/pir/dev/dev_pir.o := gcc -Wp,-MD,/home/pi/SmartDoor/sensor/pir/dev/.dev_pir.o.d  -nostdinc -isystem /usr/lib/gcc/arm-linux-gnueabihf/6/include -I./arch/arm/include -I./arch/arm/include/generated  -I./include -I./arch/arm/include/uapi -I./arch/arm/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -fno-dwarf2-cfi-asm -fno-omit-frame-pointer -mapcs -mno-sched-prolog -fno-ipa-sra -mabi=aapcs-linux -mno-thumb-interwork -mfpu=vfp -funwind-tables -marm -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -fno-delete-null-pointer-checks -Wno-frame-address -O2 --param=allow-store-data-races=0 -DCC_HAVE_ASM_GOTO -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -Wno-unused-const-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fno-merge-all-constants -fmerge-constants -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init  -DMODULE  -DKBUILD_BASENAME='"dev_pir"'  -DKBUILD_MODNAME='"dev_pir"' -c -o /home/pi/SmartDoor/sensor/pir/dev/.tmp_dev_pir.o /home/pi/SmartDoor/sensor/pir/dev/dev_pir.c
+cmd_/home/pi/SmartDoor/sensor/led/ledtest_dev.o := gcc -Wp,-MD,/home/pi/SmartDoor/sensor/led/.ledtest_dev.o.d  -nostdinc -isystem /usr/lib/gcc/arm-linux-gnueabihf/6/include -I./arch/arm/include -I./arch/arm/include/generated  -I./include -I./arch/arm/include/uapi -I./arch/arm/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -fno-dwarf2-cfi-asm -fno-omit-frame-pointer -mapcs -mno-sched-prolog -fno-ipa-sra -mabi=aapcs-linux -mno-thumb-interwork -mfpu=vfp -funwind-tables -marm -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -fno-delete-null-pointer-checks -Wno-frame-address -O2 --param=allow-store-data-races=0 -DCC_HAVE_ASM_GOTO -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -Wno-unused-const-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fno-merge-all-constants -fmerge-constants -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init  -DMODULE  -DKBUILD_BASENAME='"ledtest_dev"'  -DKBUILD_MODNAME='"ledtest_dev"' -c -o /home/pi/SmartDoor/sensor/led/.tmp_ledtest_dev.o /home/pi/SmartDoor/sensor/led/ledtest_dev.c
 
-source_/home/pi/SmartDoor/sensor/pir/dev/dev_pir.o := /home/pi/SmartDoor/sensor/pir/dev/dev_pir.c
+source_/home/pi/SmartDoor/sensor/led/ledtest_dev.o := /home/pi/SmartDoor/sensor/led/ledtest_dev.c
 
-deps_/home/pi/SmartDoor/sensor/pir/dev/dev_pir.o := \
+deps_/home/pi/SmartDoor/sensor/led/ledtest_dev.o := \
   include/linux/compiler_types.h \
     $(wildcard include/config/have/arch/compiler/h.h) \
     $(wildcard include/config/enable/must/check.h) \
@@ -797,18 +797,7 @@ deps_/home/pi/SmartDoor/sensor/pir/dev/dev_pir.o := \
     $(wildcard include/config/modules/use/elf/rela.h) \
   include/linux/delay.h \
   arch/arm/include/asm/delay.h \
-  include/linux/uaccess.h \
-  include/linux/kasan-checks.h \
-  arch/arm/include/asm/uaccess.h \
-    $(wildcard include/config/cpu/sw/domain/pan.h) \
-    $(wildcard include/config/cpu/use/domains.h) \
-    $(wildcard include/config/uaccess/with/memcpy.h) \
-  arch/arm/include/asm/domain.h \
-    $(wildcard include/config/io/36.h) \
-    $(wildcard include/config/cpu/cp15/mmu.h) \
-  arch/arm/include/generated/asm/extable.h \
-  include/asm-generic/extable.h \
 
-/home/pi/SmartDoor/sensor/pir/dev/dev_pir.o: $(deps_/home/pi/SmartDoor/sensor/pir/dev/dev_pir.o)
+/home/pi/SmartDoor/sensor/led/ledtest_dev.o: $(deps_/home/pi/SmartDoor/sensor/led/ledtest_dev.o)
 
-$(deps_/home/pi/SmartDoor/sensor/pir/dev/dev_pir.o):
+$(deps_/home/pi/SmartDoor/sensor/led/ledtest_dev.o):

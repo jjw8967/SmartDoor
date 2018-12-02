@@ -21,6 +21,7 @@ int main(int argc, char *argv[]){
 
 	while(1){
 		read(fd,buffer,1);
+		printf("%s",buffer);
 		if(strcmp(buffer,"1")==0)
 			printf("yeah\n");
 		else

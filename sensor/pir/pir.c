@@ -2,7 +2,7 @@
 #include<wiringPi.h>
 #include<stdlib.h>
 int main(void){
-	int pirPin =1;
+	int pirPin =4;
 	int readPir =0;
 
 	if(wiringPiSetup() == -1)

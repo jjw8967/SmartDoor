@@ -1,8 +1,8 @@
-cmd_/home/pi/SmartDoor/sensor/pir/dev/dev_pir.o := gcc -Wp,-MD,/home/pi/SmartDoor/sensor/pir/dev/.dev_pir.o.d  -nostdinc -isystem /usr/lib/gcc/arm-linux-gnueabihf/6/include -I./arch/arm/include -I./arch/arm/include/generated  -I./include -I./arch/arm/include/uapi -I./arch/arm/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -fno-dwarf2-cfi-asm -fno-omit-frame-pointer -mapcs -mno-sched-prolog -fno-ipa-sra -mabi=aapcs-linux -mno-thumb-interwork -mfpu=vfp -funwind-tables -marm -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -fno-delete-null-pointer-checks -Wno-frame-address -O2 --param=allow-store-data-races=0 -DCC_HAVE_ASM_GOTO -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -Wno-unused-const-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fno-merge-all-constants -fmerge-constants -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init  -DMODULE  -DKBUILD_BASENAME='"dev_pir"'  -DKBUILD_MODNAME='"dev_pir"' -c -o /home/pi/SmartDoor/sensor/pir/dev/.tmp_dev_pir.o /home/pi/SmartDoor/sensor/pir/dev/dev_pir.c
+cmd_/home/pi/SmartDoor/sensor/ultrasonic/dev/dev_ult.o := gcc -Wp,-MD,/home/pi/SmartDoor/sensor/ultrasonic/dev/.dev_ult.o.d  -nostdinc -isystem /usr/lib/gcc/arm-linux-gnueabihf/6/include -I./arch/arm/include -I./arch/arm/include/generated  -I./include -I./arch/arm/include/uapi -I./arch/arm/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -fno-dwarf2-cfi-asm -fno-omit-frame-pointer -mapcs -mno-sched-prolog -fno-ipa-sra -mabi=aapcs-linux -mno-thumb-interwork -mfpu=vfp -funwind-tables -marm -D__LINUX_ARM_ARCH__=7 -march=armv7-a -msoft-float -Uarm -fno-delete-null-pointer-checks -Wno-frame-address -O2 --param=allow-store-data-races=0 -DCC_HAVE_ASM_GOTO -Wframe-larger-than=1024 -fno-stack-protector -Wno-unused-but-set-variable -Wno-unused-const-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fno-merge-all-constants -fmerge-constants -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init  -DMODULE  -DKBUILD_BASENAME='"dev_ult"'  -DKBUILD_MODNAME='"dev_ult"' -c -o /home/pi/SmartDoor/sensor/ultrasonic/dev/.tmp_dev_ult.o /home/pi/SmartDoor/sensor/ultrasonic/dev/dev_ult.c
 
-source_/home/pi/SmartDoor/sensor/pir/dev/dev_pir.o := /home/pi/SmartDoor/sensor/pir/dev/dev_pir.c
+source_/home/pi/SmartDoor/sensor/ultrasonic/dev/dev_ult.o := /home/pi/SmartDoor/sensor/ultrasonic/dev/dev_ult.c
 
-deps_/home/pi/SmartDoor/sensor/pir/dev/dev_pir.o := \
+deps_/home/pi/SmartDoor/sensor/ultrasonic/dev/dev_ult.o := \
   include/linux/compiler_types.h \
     $(wildcard include/config/have/arch/compiler/h.h) \
     $(wildcard include/config/enable/must/check.h) \
@@ -809,6 +809,6 @@ deps_/home/pi/SmartDoor/sensor/pir/dev/dev_pir.o := \
   arch/arm/include/generated/asm/extable.h \
   include/asm-generic/extable.h \
 
-/home/pi/SmartDoor/sensor/pir/dev/dev_pir.o: $(deps_/home/pi/SmartDoor/sensor/pir/dev/dev_pir.o)
+/home/pi/SmartDoor/sensor/ultrasonic/dev/dev_ult.o: $(deps_/home/pi/SmartDoor/sensor/ultrasonic/dev/dev_ult.o)
 
-$(deps_/home/pi/SmartDoor/sensor/pir/dev/dev_pir.o):
+$(deps_/home/pi/SmartDoor/sensor/ultrasonic/dev/dev_ult.o):

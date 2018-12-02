@@ -7,16 +7,16 @@
 #include<linux/uaccess.h>
 
 
-#define GPIO1 18
+#define GPIO4 23
 #define DEV_NAME "pir_dev"
-#define DEV_NUM 240
+#define DEV_NUM 241
 
 MODULE_LICENSE("GPL");
 static char *msg = NULL;
 
 int open(struct inode *pinode, struct file *pfile){
 	printk(KERN_ALERT "OPEN pir_dev\n");
-	gpio_request(GPIO1,"GPIO1");
+	gpio_request(GPIO4,"GPIO4");
 
 	return 0;
 }
@@ -25,7 +25,7 @@ ssize_t read(struct file *pfile, char __user *buffer, size_t length, loff_t *off
 	int value;
 	printk(KERN_ALERT "Read pir dev\n");
 	
-	value=gpio_get_value(GPIO1);
+	value=gpio_get_value(GPIO4);
 	if(value==0)
 		copy_to_user(buffer,"0",1);
 	else
