@@ -1,8 +1,13 @@
 const mongoose = require('mongoose')
 const { DB } = require('../constants')
 
+mongoose.Promise = global.Promise;
+mongoose.connect(DB,{
+    keepAlive: true,
+    reconnectTries: Number.MAX_VALUE,
+    useMongoClient: true   
+})
 
-mongoose.connect(DB,{useNewUrlParser: true})
 mongoose.connection.on('connected', () => {
     console.info(`Running mongoose v${mongoose.version}`)
 })

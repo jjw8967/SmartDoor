@@ -1,0 +1,90 @@
+<html>
+  <head>
+  <title>Smart Door</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+  <body>
+    <ul class="header">
+        <li><a class="active" href="/">Home</a></li>
+        <li><a href="/setting">Setting</a></li>
+    </ul>
+
+    <div class="section">
+        <% for(var i=0; i<length; i++){ %>
+            <p>
+                    <%= notices[i].text %>
+                    <input type="checkbox" name="check<%=i%>">
+            </p>
+        <% } %>
+    </div>
+    <button type="button" onclick="onSubmit()">Submit</button>
+  </body>
+</html>
+<script>
+    var notices = new Array();
+    function onSubmit(){
+        let check
+        for(let i=0;i<notices.length;i++){
+            check=$("input:checkbox")[i].checked
+            if(check==false){
+                alert("Failed");
+                break;
+            }else{ 
+                alert("Success");
+                window.location.reload()
+                break;
+            }
+        }
+        return
+    }
+    $.ajax({
+
+    url: "/get", 
+
+    type: "GET",     
+
+    dataType: "json"
+
+    }).done((json)=>{
+        for(let i=0;i<json.length;i++){
+            notices.push(json[i]);
+        }
+    })
+</script>
+<style>
+ul.header {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.header li {
+    float: left;
+}
+
+.header li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.header li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.header .active {
+    background-color: #4CAF50;
+}
+body {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    }
+</style>

@@ -1,0 +1,103 @@
+<html>
+  <head>
+  <title>Smart Door</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+  <body>
+    <ul class="header">
+        <li><a href="/">Home</a></li>
+        <li><a class="active" href="/setting">Setting</a></li>
+    </ul>
+    <button onclick="onAdd()">Add</button>
+    <button onclick="onDelete()">Delete</button>
+    <p id="demo"></p>
+
+    <div>
+        <% for(var i=0; i<length; i++){ %>
+            <p>
+                <%= notices[i].text %>
+            </p>
+            
+        <% } %>
+    </div>
+  </body>
+</html>
+<script>
+    lists = new Array();
+    function onAdd() {
+        let content;
+        let text = prompt("Type your notice");
+        
+        console.log(text)
+        $.ajax({
+
+        url: "/create", // 클라이언트가 요청을 보낼 서버의 URL 주소
+
+        data: { "text": text},                // HTTP 요청과 함께 서버로 보낼 데이터
+
+        type: "POST",                             // HTTP 요청 방식(GET, POST)
+
+        dataType: "json"
+        
+        }).done(()=>{
+            window.location.reload()
+        })
+    }
+    function onDelete(){
+        let content;
+        let text = prompt("Type your notice");
+        
+        console.log(text)
+        $.ajax({
+
+        url: "/delete", // 클라이언트가 요청을 보낼 서버의 URL 주소
+
+        data: { "text": text},                // HTTP 요청과 함께 서버로 보낼 데이터
+
+        type: "POST",                             // HTTP 요청 방식(GET, POST)
+
+        dataType: "json"
+        
+        }).done(()=>{
+            window.location.reload()
+        })
+
+    }
+</script>
+<style>
+    ul.header {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+    
+    .header li {
+        float: left;
+    }
+    
+    .header li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    
+    .header li a:hover:not(.active) {
+        background-color: #111;
+    }
+    
+    .header .active {
+        background-color: #4CAF50;
+    }
+    body {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    }
+    </style>

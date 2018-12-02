@@ -22,6 +22,8 @@
             }
         },
         created: function(){
+            var currentUrl = window.location.pathname;
+            console.log(currentUrl);
             this.$http.get("http://localhost:8000/notice/get").then((data)=>{
                 for(let i=0;i<data.data.length;i++){
                     let value={"text":data.data[i].text,"check":data.data[i].check}
