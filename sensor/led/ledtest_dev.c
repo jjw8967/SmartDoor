@@ -15,23 +15,25 @@ int ledtest_open(struct inode *pinode, struct file *pfile){
 	printk(KERN_ALERT "OPEN ledtest_dev\n");
 	gpio_request(GPIO1, "GPIO1");
 	gpio_request(GPIO2, "GPIO2");
+	gpio_direction_output(GPIO2, 0);
+	gpio_direction_output(GPIO1, 0);
 	return 0;
 }
 
 int ledtest_close(struct inode *pinode, struct file *pfile){
-	gpio_direction_output(GPIO2,0);
-	gpio_direction_output(GPIO1,0);
+	gpio_set_value(GPIO2,0);
+	gpio_set_value(GPIO1,0);
 	printk(KERN_ALERT "RELEASE ledtets_dev\n");
 	return 0;
 }
 int ledtest_on(struct file *pfile, char *buffer, size_t size, loff_t *ppos){
-	gpio_direction_output(GPIO2,0);
-	gpio_direction_output(GPIO1,1);
+	gpio_set_value(GPIO2,0);
+	gpio_set_value(GPIO1,1);
 	return 0;	
 }
 int ledtest_off(struct file *pfile, const char *buffer, size_t size, loff_t *ppos){
-	gpio_direction_output(GPIO1,0);
-	gpio_direction_output(GPIO2,1);
+	gpio_set_value(GPIO1,0);
+	gpio_set_value(GPIO2,1);
 	return 0;
 }
 struct file_operations fop={
