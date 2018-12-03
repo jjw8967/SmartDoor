@@ -44,6 +44,19 @@ router.get("/get",(req,res,next)=>{
     })
 })
 
+router.get("/submit",(req,res,next)=>{
+	let exec = require("child_process").exec, child;
+
+	child = exec("~/Desktop/servo-motor/app/app_motor",(err,stdout,stderr)=>{
+		console.log("stdout:" + stdout);
+		console.log("stderr:" + stderr);
+		if(err !== null)
+			console.log("exec error:"+ err);
+	})
+	res.send("ok");
+
+
+})
 module.exports = router;
 
 /*

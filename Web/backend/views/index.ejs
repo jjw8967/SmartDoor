@@ -32,12 +32,27 @@
                 break;
             }else{ 
                 alert("Success");
-                window.location.reload()
+		    $.ajax({
+
+		    url: "/submit", 
+
+		    type: "GET",     
+
+		    dataType: "json"
+
+		    }).done((json)=>{
+			console.log("here");
+			window.location.reload()
+			
+		    })
+
+			
                 break;
             }
         }
-        return
-    }
+	}
+
+    
     $.ajax({
 
     url: "/get", 

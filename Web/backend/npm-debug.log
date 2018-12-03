@@ -7,19 +7,19 @@
 6 info start backend@0.0.0
 7 verbose unsafe-perm in lifecycle true
 8 info backend@0.0.0 Failed to exec start script
-9 error backend@0.0.0 start: `node server.js`
+9 error backend@0.0.0 start: `nodejs app.js`
 9 error Exit status 1
 10 error Failed at the backend@0.0.0 start script.
 10 error This is most likely a problem with the backend package,
 10 error not with npm itself.
 10 error Tell the author that this fails on your system:
-10 error     node server.js
+10 error     nodejs app.js
 10 error You can get their info via:
 10 error     npm owner ls backend
 10 error There is likely additional logging output above.
-11 error System Linux 4.14.79-v7+
+11 error System Linux 4.9.80-v7+
 12 error command "/usr/bin/node" "/usr/bin/npm" "start"
-13 error cwd /home/pi/SmartDoor/Web/backend
+13 error cwd /home/pi/Desktop/servo-motor/SmartDoor/Web/backend
 14 error node -v v8.11.1
 15 error npm -v 1.4.21
 16 error code ELIFECYCLE
