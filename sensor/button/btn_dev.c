@@ -15,12 +15,9 @@ MODULE_LICENSE("GPL");
 
 static unsigned int irqnum;
 static unsigned int count = 0;
-static unsigned int hi = 0;
+static unsigned int flag = 0;
 static unsigned int result;
-static irq_handler_t  ebbgpio_irq_handler(unsigned int irq, void *dev_id, struct pt_regs *regs);
-
-//char k[2];
-//char __user *buf;
+static irq_handler_t  mybtn_irq_handler(unsigned int irq, void *dev_id, struct pt_regs *regs);
 
 int btn_open(struct inode *pinode, struct file *pile){
 	printk(KERN_ALERT "OPEN btn_dev\n");
@@ -34,10 +31,8 @@ int btn_open(struct inode *pinode, struct file *pile){
 	printk(KERN_INFO "GPIO_TEST: The button is mapped to IRQ: %d\n", gpio_to_irq(GPIO));
 	irq_set_irq_type(irqnum, IRQ_TYPE_EDGE_RISING);
 
-	result = request_irq(irqnum, (irq_handler_t) ebbgpio_irq_handler, IRQF_TRIGGER_RISING, "ebb_gpio_handler", NULL);
+	result = request_irq(irqnum, (irq_handler_t) ebbgpio_irq_handler, IRQF_TRIGGER_RISING, "mybtn_gpio_handler", NULL);
 
-
-//	result = request_irq(irqnum, gpio_int, 0, GPIO , NULL);
 	printk(KERN_INFO "GPIO_TEST: The interrupt request result is: %d\n", result);
 
 	return 0;
@@ -45,41 +40,31 @@ int btn_open(struct inode *pinode, struct file *pile){
 
 ssize_t btn_read(struct file *pfile, char __user *buffer, size_t length, loff_t *offset){
 	printk(KERN_ALERT "BUTTON TEST TEST TEST %d\n", result);
-//	buf = buffer;
-//	irqnum = gpio_to_irq(GPIO);
-	
-//		result = request_irq(irqnum, (irq_handler_t) ebbgpio_irq_handler, IRQF_TRIGGER_RISING, "ebb_gpio_handler", NULL);
-		if(hi > 0){
-//			k[0] = "k"; k[1] = NULL;
-			copy_to_user(buffer, "k", length);
-			hi = 0;
-//			k[0] = NULL; k[1] = NULL;
+
+		if(flag > 0){
+			copy_to_user(buffer, "o", length);
+			flag = 0;
 			printk(KERN_ALERT "GPIO TEST RESULT : %d\n", result);
-
-//			break;
+			break;
 		}
-
 }
-
 
 int btn_close(struct inode *pinode, struct file *pfile){
 	printk(KERN_ALERT "RELEASE btn_dev\n");
 	free_irq(irqnum, NULL);
 	count = 0;
-	hi = 0;
-//	k[0] = NULL; k[1] = NULL;
+	flag = 0;
 	gpio_unexport(GPIO);
 	gpio_free(GPIO);
 	return 0;
 }
 
-static irq_handler_t ebbgpio_irq_handler(unsigned int irq, void *dev_id, struct pt_regs *regs){
+static irq_handler_t mybtn_irq_handler(unsigned int irq, void *dev_id, struct pt_regs *regs){
 	printk(KERN_INFO "GPIO_TEST: Interrupt! (button state is %d)\n", gpio_get_value(GPIO));
 
 	if(gpio_get_value(GPIO)){
 		printk(KERN_INFO "PRESSED BUUTON %d\n", count++);
-//		copy_to_user(buf,"k",2);
-		hi = 10;
+		falg = 1;
 	}
 	return (irq_handler_t) IRQ_HANDLED;
 }
