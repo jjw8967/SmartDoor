@@ -7,7 +7,7 @@
 #define GPIO3 22
 #define GPIO4 23
 #define DEV_NAME "ledtest_dev"
-#define DEV_NUM 240
+#define DEV_NUM 242
 
 MODULE_LICENSE("GPL");
 
