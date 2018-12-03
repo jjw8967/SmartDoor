@@ -18,37 +18,28 @@ int main(int argc, char *argv[]){
 	}
 
 	printf("open success\n");
+
+	int ret = read(fd, receive, 2);
+
+	while(1){
+		int ret = read(fd, receive, 2);
+
+		if(strcmp(receive, "o") == 0){
+			printf("button pressed %s\n", receive);
+			receive[0] = '0';
+			break;
+		}
+	}
 	
 	int i = 0;
 
-		int ret = read(fd, receive, 2);
-
-
-//		printf("enter 1 -> close :");
-//		scanf("%d", &i);
-
-//		int ret = read(fd, receive, 128);
-//
-		while(1){
-		int ret = read(fd, receive, 2);
-//		printf("button %s\n", receive);
-
-			if(strcmp(receive, "1") == 0){
-				printf("hihi\n");
-			}else if(strcmp(receive, "k") == 0){
-				printf("button pressed %s\n", receive);
-				receive[0] = '3';
-				continue;
-			}
-		}
-
-		printf("enter 1  close:");
-		scanf("%d", &i);
-
-		if(i == 1){
-			printf("close\n");
-			close(fd);
-		}
+	printf("enter 1  close:");
+	scanf("%d", &i);
+	
+	if(i == 1){
+		printf("close\n");
+		close(fd);
+	}
 	
 	return 0;
 }
