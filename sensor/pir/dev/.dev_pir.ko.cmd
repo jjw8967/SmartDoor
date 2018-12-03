@@ -1,1 +1,0 @@
-cmd_/home/pi/sensor/pir/dev/dev_pir.ko := ld -EL -r  -T ./scripts/module-common.lds --build-id  -o /home/pi/sensor/pir/dev/dev_pir.ko /home/pi/sensor/pir/dev/dev_pir.o /home/pi/sensor/pir/dev/dev_pir.mod.o ;  true
