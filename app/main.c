@@ -43,10 +43,6 @@ int main(int argc, char *argv[]){
 	int fd_u = 0; //ultrasonic
 
 	
-	if((fd_b = open(BTN_DEV_PATH, O_RDWR | O_NONBLOCK)) < 0){
-		perror("open()");
-		exit(1);
-	}
 	if((fd_m = open(MOTOR_DEV_PATH, O_RDWR | O_NONBLOCK)) < 0){
 		perror("open()");
 		exit(1);
@@ -90,22 +86,26 @@ int main(int argc, char *argv[]){
 	close(f_door);
 	pthread_create(&proc_web, NULL, read_door,NULL);
 	
+	if((fd_b = open(BTN_DEV_PATH, O_RDWR | O_NONBLOCK)) < 0){
+		perror("open()");
+		exit(1);
+	}
+
 	while(1){
 		ret = read(fd_b, receive, 2);
-
-		if(strcmp(receive, "o") == 0 || check == 1){
+		if(strcmp(receive, "o") == 0 || check==1){
 			printf("button pressed %s\n", receive);
-			receive[0] = '0';
+			memset(receive,'\0',100);
 			pthread_cancel(proc_web);
 			check=0;
 			write(fd_m, "open", strlen("open"));
+			close(fd_b);
 			break;
 		}
-		ret = 1;
 		usleep(50*1000);
 		
 	}
-
+	
 	usleep(4000*1000);
 	write(fd_m, "close", strlen("close"));
 	if((f_door=open("door.txt",O_RDWR | O_NONBLOCK)) < 0){
