@@ -42,21 +42,16 @@ elif weather[0] == '안개':
     weather[0] = 'foggy'
 elif weather[0]== '비':
     weather[0] = 'rain'
-    message2 = "'Check Umbrella!'"
+    message2 = 'Check Umbrella!'
 elif weather[0] == '소나기':
     weather[0] = 'short_rain'
-    message2 = "'Check Umbrella!'"
-elif weather[0] == '눈':
-    weather[0] = 'Snow'
-    message2 = "'Outside SnowDay'"
-
+    message2 = 'Check Umbrella!'
+elif temperature < -5:
+    message2 = 'Very Very Cold!'
+elif temperature > 30:
+    message2 = 'Very Very Hot!'
 else :
-    weather[0] = "'Check Phone'"
-
-if int(temperature) < -5:
-    message2 = "'Very Very Cold!'"
-elif int(temperature) > 30:
-    message2 = "'Very Very Hot!'"
+    weather[0] = 'check_phone'
                                
 
 message = 'seoul:'+temperature+':'+weather[0]
