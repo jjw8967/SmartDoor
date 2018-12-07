@@ -39,7 +39,7 @@ ssize_t motor_write(struct file *pfile, const char __user *buffer, size_t length
 	printk(KERN_ALERT "msg:%s\n", msg); // behind msg trash..?? error
 	
 	if(!strncmp(msg, "open", 4)){
-		for(i = 0 ; i < 23; i++) { // degree of ratating
+		for(i = 0 ; i < 45; i++) { // degree of ratating
 			// gpio_set_value(PIN_NUM, 1); // set output pin_num as high
 			gpio_direction_output(PIN_NUM, 1);
 			mdelay(2); // ratating direction

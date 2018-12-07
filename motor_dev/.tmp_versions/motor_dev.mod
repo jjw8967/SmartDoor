@@ -1,3 +1,3 @@
-/home/pi/Desktop/servo-motor/motor/motor_dev.ko
-/home/pi/Desktop/servo-motor/motor/motor_dev.o
+/home/pi/Desktop/servo-motor/SmartDoor/motor_dev/motor_dev.ko
+/home/pi/Desktop/servo-motor/SmartDoor/motor_dev/motor_dev.o
 

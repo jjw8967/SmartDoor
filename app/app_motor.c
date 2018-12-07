@@ -21,8 +21,14 @@ int main(int argc, char *argv[]){
 	printf("open success\n");
 
 	printf("open the door!\n");
-
+	if(strcmp(argv[1],"open")==0){
 	write(fd, "open", strlen("open"));
-	
+	printf("open");
+	}
+	if(strcmp(argv[1],"close")==0){
+	write(fd, "close", strlen("close"));
+	printf("close");
+	}
+
 	return 0;
 }
