@@ -45,16 +45,37 @@ router.get("/get",(req,res,next)=>{
 })
 
 router.get("/submit",(req,res,next)=>{
+	console.log("ok submit")
 	let exec = require("child_process").exec, child;
-
-	child = exec("~/Desktop/servo-motor/app/app_motor",(err,stdout,stderr)=>{
-		console.log("stdout:" + stdout);
-		console.log("stderr:" + stderr);
-		if(err !== null)
-			console.log("exec error:"+ err);
+	child = exec("~/Desktop/servo-motor/SmartDoor/app/write_door",(err,stdout,stderr)=>{
+	console.log("stdout:" + stdout);
+	console.log("stderr:" + stderr);
+	if(err !== null)
+		console.log("exec error:"+ err);
 	})
 	res.send("ok");
 
+	/*
+	child = exec("~/Desktop/servo-motor/SmartDoor/app/app_motor open",(err,stdout,stderr)=>{
+	console.log("stdout:" + stdout);
+	console.log("stderr:" + stderr);
+	if(err !== null)
+		console.log("exec error:"+ err);
+	})
+
+	setTimeout(()=>{
+		let exec = require("child_process").exec, child;
+		
+		child = exec("~/Desktop/servo-motor/SmartDoor/app/app_motor close",(err,stdout,stderr)=>{
+			console.log("stdout:" + stdout);
+			console.log("stderr:" + stderr);
+			if(err !== null)
+				console.log("exec error:"+ err);
+		})
+		res.send("ok");	
+	},3000);
+		
+	*/
 
 })
 module.exports = router;

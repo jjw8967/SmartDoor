@@ -23,7 +23,7 @@ int btn_open(struct inode *pinode, struct file *pile){
 	printk(KERN_ALERT "OPEN btn_dev\n");
 	gpio_request(GPIO, "GPIO");
 	gpio_direction_input(GPIO);
-	gpio_direction_output(GPIO , 1);
+	gpio_direction_output(GPIO , 0);
 	printk(KERN_ALERT "gpio state : %d\n", gpio_get_value(GPIO));
 	gpio_set_debounce(GPIO, 100);
 	printk(KERN_ALERT "gpio input : %d\n", gpio_direction_input(GPIO));
@@ -44,6 +44,7 @@ ssize_t btn_read(struct file *pfile, char __user *buffer, size_t length, loff_t 
 		if(flag > 0){
 			copy_to_user(buffer, "o", length);
 			flag = 0;
+			gpio_direction_output(GPIO, 1);
 			printk(KERN_ALERT "GPIO TEST RESULT : %d\n", result);
 		}
 }
@@ -61,7 +62,7 @@ int btn_close(struct inode *pinode, struct file *pfile){
 static irq_handler_t mybtn_irq_handler(unsigned int irq, void *dev_id, struct pt_regs *regs){
 	printk(KERN_INFO "GPIO_TEST: Interrupt! (button state is %d)\n", gpio_get_value(GPIO));
 
-	if(!gpio_get_value(GPIO)){
+	if(gpio_get_value(GPIO)){
 		printk(KERN_INFO "PRESSED BUUTON %d\n", count++);
 		flag = 1;
 	}
