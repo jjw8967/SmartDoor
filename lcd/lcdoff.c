@@ -19,11 +19,9 @@ int main(int argc, char **argv ){
 		printf("lcd init failed!\n");
 		return -1;
 	}
-	printf("complete");
+	printf("lcdoff complete!");
 	lcdPosition(lcd, 0,0);
-	lcdPuts(lcd, argv[1]);
-	lcdPosition(lcd, 0, 1);
-	lcdPuts(lcd, argv[2]);
+	lcdPuts(lcd, "");
 
 }
 
