@@ -48,7 +48,7 @@ int main(int argc, char *argv[]){
 		read(fd_u,buffer,9);
 		printf("%s\n",buffer);
 		distance=atoi(buffer);
-		if(distance<50){
+		if(distance<15){
 			write(fd_l,buffer,1);
 			break;
 		}else{
