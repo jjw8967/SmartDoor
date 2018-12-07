@@ -1,6 +1,7 @@
 #include<wiringPi.h>
 #include<lcd.h>
 #include<stdio.h>
+#include<stdlib.h>
 
 #define LCD_RS 11
 #define LCD_E 10

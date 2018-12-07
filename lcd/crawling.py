@@ -4,13 +4,15 @@ import os
 import request
 import urllib
 import bs4
+
+from time import sleep
 from urllib2 import urlopen
+
 
 reload(sys)
 sys.setdefaultencoding('utf8')
 location = '서울'
 enc_location = urllib.quote(location + '+날씨')
-
 url = 'https://search.naver.com/search.naver?ie=utf8&query='+ enc_location
 
 
@@ -21,12 +23,6 @@ temperature = soup.find('p', class_='info_temperature').find('span', class_='tod
 weather = soup.find('ul', class_='info_list').find('p', class_='cast_txt').text
 weather = weather.split(',')
 message2 = ''
-# print(weather[0])
-# weather_list = list(weather)
-# weather_list = weather_list.split(',')
-# print(weather_list)
-#
-# print(weather)
 print(location)
 print(temperature)
 print(weather[0])
@@ -49,7 +45,6 @@ elif weather[0] == '소나기':
 elif weather[0] == '눈':
     weather[0] = 'Snow'
     message2 = "'Outside SnowDay'"
-
 else :
     weather[0] = "'Check Phone'"
 
@@ -57,9 +52,7 @@ if int(temperature) < -5:
     message2 = "'Very Very Cold!'"
 elif int(temperature) > 30:
     message2 = "'Very Very Hot!'"
-                               
 
 message = 'seoul:'+temperature+':'+weather[0]
-
 os.system("./lcdtest "+message+" "+message2)
 
